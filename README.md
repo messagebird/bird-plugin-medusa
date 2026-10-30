@@ -4,7 +4,7 @@ Send email, SMS, and WhatsApp notifications from your Medusa v2 application with
 
 ## Install and configure
 
-Install the package after its first npm release:
+Install the [Bird notification provider](https://www.npmjs.com/package/@messagebird/bird-plugin-medusa) from npm:
 
 ```sh
 npm install @messagebird/bird-plugin-medusa
@@ -60,7 +60,7 @@ Keep the local `feed` provider for Medusa admin notifications such as product an
 
 Restart or redeploy Medusa after changing the configuration. On Medusa Cloud, enable the **Build** flag for the environment variables used here. Credentials and defaults are server configuration; this package adds no admin settings page or OAuth connection form.
 
-Create an API key in your [Bird workspace](https://bird.com/dashboard) with send permissions for the channels you enable: `emails:write`, `sms:write`, and `whatsapp:write`. Keep it in server environment variables. The provider derives the API region from the key; no workspace ID or region setting is needed. Use a `bk_<region>_…` API key. Short-lived OAuth tokens (`bt_…`), legacy MessageBird keys, and SparkPost keys are not supported.
+Create an API key in your [Bird workspace](https://bird.com/dashboard) with send permissions for the channels you enable: `emails:write`, `sms:write`, and `whatsapp:write`. Keep it in server environment variables. The provider derives the API region from the key; no workspace ID or region setting is needed. Use a `bk_<region>_…` API key. Short-lived OAuth tokens (`bt_…`) are not supported.
 
 Use a verified email domain for `BIRD_EMAIL_FROM` and a configured SMS sender for `BIRD_SMS_FROM`. Configure only the channels you use. A notification's `from` overrides its channel's default sender. For WhatsApp, use a connected number as `BIRD_WHATSAPP_FROM`. For built-in SMS and WhatsApp templates, use their `bird_…` slug and omit `notification.from`; the provider skips the configured default sender. When referring to a built-in template by ID instead, use a provider configuration without that channel's default sender.
 
