@@ -1,0 +1,27 @@
+# Standalone mirrors do not inherit the root workspace policy. Keep the security
+# overrides for this development/test dependency tree aligned with the root.
+overrides:
+  protobufjs: 7.6.6
+  js-yaml@3: 3.15.2
+  js-yaml@4: 4.3.2
+  "@babel/core@7": 7.29.7
+  "@opentelemetry/core": 2.8.0
+  ws@8: 8.22.0
+  undici: 6.29.1
+  path-to-regexp@6: 6.3.0
+  minimatch@10: 10.2.6
+  ajv@>=7.0.0-alpha.0 <8.18.0: 8.20.0
+  lodash: 4.18.1
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@typescript/*"
+  - typescript
+allowBuilds:
+  # Prebuilt; postinstall only displays an analytics notice.
+  "@medusajs/telemetry": false
+  "@swc/core": true
+  esbuild: true
+  protobufjs: true
+  # Local Docker tests do not use SSH or its optional native acceleration.
+  cpu-features: false
+  ssh2: false

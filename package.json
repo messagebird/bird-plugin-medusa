@@ -1,0 +1,80 @@
+{
+  "name": "@messagebird/bird-plugin-medusa",
+  "version": "0.1.0",
+  "description": "Bird email, SMS, and WhatsApp notifications for Medusa v2.",
+  "license": "MIT",
+  "author": {
+    "name": "Bird",
+    "email": "connectors@bird.com"
+  },
+  "homepage": "https://bird.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/messagebird/bird-plugin-medusa.git"
+  },
+  "bugs": {
+    "url": "https://github.com/messagebird/bird-plugin-medusa/issues"
+  },
+  "keywords": [
+    "medusa-v2",
+    "medusa-plugin-integration",
+    "medusa-plugin-notification",
+    "medusa-provider",
+    "bird",
+    "messagebird",
+    "email",
+    "sms",
+    "whatsapp",
+    "notifications"
+  ],
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./providers/bird": {
+      "types": "./dist/providers/bird/index.d.ts",
+      "default": "./dist/providers/bird/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "whatsapp.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "scripts": {
+    "build": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\" && tsc6",
+    "typecheck": "tsc6 -p tsconfig.typecheck.json",
+    "test": "npm run typecheck && vitest run src",
+    "lint": "eslint src && npm run typecheck",
+    "prepack": "npm run build",
+    "test:integration": "npm run build && node --experimental-vm-modules ./node_modules/jest/bin/jest.js --config jest.integration.config.cjs --runInBand"
+  },
+  "peerDependencies": {
+    "@medusajs/framework": "^2.21.2"
+  },
+  "devDependencies": {
+    "@medusajs/eslint-plugin": "2.21.2",
+    "@medusajs/framework": "2.21.2",
+    "@medusajs/notification": "2.21.2",
+    "@medusajs/notification-local": "2.21.2",
+    "@medusajs/test-utils": "2.21.2",
+    "@testcontainers/postgresql": "11.12.0",
+    "@types/node": "22.20.5",
+    "eslint": "9.39.5",
+    "jest": "29.7.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "vitest": "5.0.5"
+  }
+}
