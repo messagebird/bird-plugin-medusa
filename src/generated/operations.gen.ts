@@ -604,6 +604,7 @@ type OutputEmailMessage = {
   scheduled_at?: string;
   status: OutputEmailMessageStatus;
   subject: string;
+  subject_recipient_id?: OutputRecipientID;
   tags?: Array<OutputTag>;
   template_id?: (OutputEmailTemplateID | null);
   template_version_id?: (OutputEmailTemplateVersionID | null);
@@ -646,6 +647,8 @@ type OutputMessageCost = (
 );
 
 type OutputMessageReference = string;
+
+type OutputRecipientID = string;
 
 type OutputSMSBinary = {
   data: string;
