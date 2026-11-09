@@ -520,6 +520,9 @@ type InputWhatsAppTemplateSend = (
     components?: Array<InputWhatsAppMessageTemplateComponent>;
     id?: InputWhatsAppTemplateID;
     language?: InputLanguageTag;
+    parameters?: {
+      [key: string]: unknown;
+    };
     slug?: InputTemplateSlug;
   }
   & (
@@ -1018,6 +1021,9 @@ type OutputWhatsAppMessageTemplate = {
   category: OutputWhatsAppTemplateCategory;
   components: Array<OutputWhatsAppMessageTemplateComponent>;
   language: OutputLanguageTag;
+  parameters?: {
+    [key: string]: unknown;
+  };
   slug: OutputTemplateSlug;
 };
 
