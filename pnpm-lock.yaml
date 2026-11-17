@@ -37,8 +37,8 @@ importers:
         specifier: 2.21.2
         version: 2.21.2(@medusajs/framework@2.22.2(@medusajs/cli@2.22.2(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1))(@types/node@22.20.5)(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)(vite@8.3.4(@types/node@22.20.5)(yaml@2.9.1))(zod@4.6.6))(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       '@testcontainers/postgresql':
-        specifier: 11.12.0
-        version: 11.12.0(supports-color@8.1.1)
+        specifier: 11.14.0
+        version: 11.14.0(supports-color@8.1.1)
       '@types/node':
         specifier: 22.20.5
         version: 22.20.5
@@ -1352,8 +1352,8 @@ packages:
   '@so-ric/colorspace@1.1.6':
     resolution: {integrity: sha512-/KiKkpHNOBgkFJwu9sh48LkHSMYGyuTcSFK/qMBdnOAlrRJzRSXAOFB5qwzaVQuDl8wAvHVMkaASQDReTahxuw==}
 
-  '@testcontainers/postgresql@11.12.0':
-    resolution: {integrity: sha512-w4ZK0H+WIYBUBk57H9wCSxPMSMZUNsFpx2MZAX4iru0Aevz9HFWDfAhFLAu+/SwsHtEJUD7XfWUDlqBGC3OF0Q==}
+  '@testcontainers/postgresql@11.14.0':
+    resolution: {integrity: sha512-wYbJn8GRTj8qfqzfVubxioYWlHJU/ImIjuzPwyy9C5Qfo6g3GLduPZAj+BifvqTZjgT3gd4gFVLCPhBji7dc1w==}
 
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
@@ -6360,7 +6360,7 @@ snapshots:
       color: 5.0.3
       text-hex: 1.0.0
 
-  '@testcontainers/postgresql@11.12.0(supports-color@8.1.1)':
+  '@testcontainers/postgresql@11.14.0(supports-color@8.1.1)':
     dependencies:
       testcontainers: 11.14.0(supports-color@8.1.1)
     transitivePeerDependencies:

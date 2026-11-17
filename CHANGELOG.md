@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- Add the `amb.authentication.updated` webhook event type for Apple Messages sign-in outcomes. Its data includes workspace and business account identifiers alongside the authentication request.
+
 ## 0.1.3
 
 - Internal improvements.

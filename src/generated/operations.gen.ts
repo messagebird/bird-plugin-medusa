@@ -35,6 +35,8 @@ export type WhatsAppMessageRequest = InputWhatsAppMessageSendRequest;
 
 export type WhatsAppMessageResponse = OutputWhatsAppMessage;
 
+type InputBrandID = string;
+
 type InputEmailAddress = {
   email: string;
   name?: string;
@@ -54,6 +56,7 @@ type InputEmailMessageCategory = ("marketing" | "transactional");
 type InputEmailMessageSendRequest = {
   attachments?: Array<InputEmailAttachment>;
   bcc?: Array<InputEmailAddressInput>;
+  brand_id?: (InputBrandID | null);
   category?: InputEmailMessageCategory;
   cc?: Array<InputEmailAddressInput>;
   from: InputEmailAddressInput;
@@ -138,6 +141,7 @@ type InputSMSMessageSendRequest = (
     };
     reference?: InputMessageReference;
     scheduled_at?: string;
+    subject?: string;
     tags?: Array<InputTag>;
     template?: InputSMSTemplateSend;
     text?: string;
@@ -156,12 +160,18 @@ type InputSMSMessageSendRequest = (
     | {
       binary: InputSMSBinary;
     }
+    | {
+      media_urls: unknown;
+    }
   )
   & ({ text?: never } | { template?: never })
   & ({ text?: never } | { binary?: never })
   & ({ template?: never } | { binary?: never })
   & ({ template?: never } | { category?: never })
   & ({ template?: never } | { media_urls?: never })
+  & ({ template?: never } | { subject?: never })
+  & ({ binary?: never } | { subject?: never })
+  & ({ binary?: never } | { media_urls?: never })
 );
 
 type InputSMSSendOptions = {
@@ -545,6 +555,8 @@ type InputWhatsAppVideoSend = {
   url: string;
 };
 
+type OutputBrandID = string;
+
 type OutputCountryCode = string;
 
 type OutputCurrencyCode = string;
@@ -574,6 +586,7 @@ type OutputEmailMessage = {
   attachments?: Array<OutputEmailAttachmentRef>;
   bcc?: Array<OutputEmailAddress>;
   bounced_count: number;
+  brand_id?: (OutputBrandID | null);
   broadcast_id?: OutputEmailBroadcastID;
   category: OutputEmailMessageCategory;
   cc?: Array<OutputEmailAddress>;
@@ -658,6 +671,8 @@ type OutputSMSBinary = {
   udh?: string;
 };
 
+type OutputSMSContentType = ("sms" | "mms");
+
 type OutputSMSError = (
   {
     carrier_error_code?: (string | null);
@@ -671,16 +686,26 @@ type OutputSMSError = (
 
 type OutputSMSErrorCode = string;
 
+type OutputSMSFileID = string;
+
 type OutputSMSInReplyToMessage = {
   id: OutputSMSMessageID;
   sent_at?: string;
   text?: string;
 };
 
+type OutputSMSMedia = {
+  filename?: (string | null);
+  id?: OutputSMSFileID;
+  mime_type: string;
+  url?: (string | null);
+};
+
 type OutputSMSMessage = {
   binary?: OutputSMSBinary;
   carrier?: string;
   category?: (OutputSMSMessageCategory | null);
+  content_type?: OutputSMSContentType;
   cost?: OutputMessageCost;
   cost_center?: string;
   country_code?: OutputCountryCode;
@@ -692,6 +717,7 @@ type OutputSMSMessage = {
   in_reply_to_message?: OutputSMSInReplyToMessage;
   last_error?: OutputSMSError;
   mcc_mnc?: string;
+  media?: Array<OutputSMSMedia>;
   messaging_profile_id?: OutputSMSMessagingProfileID;
   metadata?: {
     [key: string]: unknown;
@@ -703,6 +729,7 @@ type OutputSMSMessage = {
   segments: OutputSMSSegments;
   sent_at?: (string | null);
   status: OutputSMSMessageStatus;
+  subject?: string;
   tags?: Array<OutputTag>;
   template_content_hash: (OutputSMSTemplateContentHash | null);
   template_id: (OutputSMSTemplateID | null);
@@ -745,7 +772,7 @@ type OutputSMSMessagingProfileID = string;
 type OutputSMSSegments = {
   characters: number;
   count: number;
-  encoding: ("GSM_7BIT" | "UCS2" | "BINARY");
+  encoding: ("GSM_7BIT" | "UCS2" | "BINARY" | "MMS");
 };
 
 type OutputSMSTemplateContentHash = string;
