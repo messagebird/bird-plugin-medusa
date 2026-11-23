@@ -1,6 +1,6 @@
 {
   "name": "@messagebird/bird-plugin-medusa",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Bird email, SMS, and WhatsApp notifications for Medusa v2.",
   "license": "MIT",
   "author": {

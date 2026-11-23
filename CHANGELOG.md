@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.1.5
+
+- The send broadcast reference now documents the 409 conflict a reschedule can return while the broadcast is being prepared to send now, in which case its schedule does not change.
+
 ## 0.1.4
 
-- Add the `amb.authentication.updated` webhook event type for Apple Messages sign-in outcomes. Its data includes workspace and business account identifiers alongside the authentication request.
+- Internal improvements.
 
 ## 0.1.3
 
