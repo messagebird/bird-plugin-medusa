@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+- **Breaking:** WhatsApp maximum-price inputs are narrower. A template language's `optimization_spec.bid_amount` accepts at most 50000 per 1,000 deliveries (0.50 per delivery), country overrides and a send's `bid_multiplier` accept 0.1 to 2, and a send is refused when its multiplier takes the recipient country's maximum price above 0.50 per delivery. Requests outside these ranges that were accepted before now return 422; lower the value to stay within them.
+- Clarify recovery guidance for calls blocked by number ownership or activation checks.
+
 ## 0.1.5
 
 - The send broadcast reference now documents the 409 conflict a reschedule can return while the broadcast is being prepared to send now, in which case its schedule does not change.
